@@ -30,7 +30,7 @@ module.exports = {
 			lime: colors.lime,
 			blueGray: colors.blueGray,
 			voilet: colors.violet,
-			purple: colors.purple
+			purple: colors.purple,
 		},
 		screens: {
 			xsm: "200px",
@@ -63,6 +63,14 @@ module.exports = {
 			"1/2": "50%",
 			"3/4": "75%",
 			full: "100%",
+		},
+	},
+	variants: {
+		extend: {
+			colors: {
+				zinc: colors.gray,
+				slate: colors.slate,
+			},
 		},
 	},
 	plugins: [],

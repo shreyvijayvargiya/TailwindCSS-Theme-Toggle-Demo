@@ -1,35 +1,51 @@
 import React, { useState } from "react";
 import { Navbar, Footer } from "modules";
 
-const Body = ({ children }) => {
+const Body = () => {
+	const theme = window?.localStorage?.getItem("theme")
+		? window.localStorage.getItem("theme")
+		: "white";
 
-	const theme = window?.localStorage?.getItem("theme") ? window.localStorage.getItem("theme") : 'white';
-	const [state, setState] = useState(theme);
+	const toggleTheme = (theme) => {
+		setActiveTheme(theme);
+	};
 
-	const toggleTheme = () => {
-		if(theme === 'white' || !theme){
-			setState("dark")
-			window.localStorage.setItem("theme", "dark")
-		}else {
-			setState("white")
-			window.localStorage.setItem("theme", "white")
-		}
-	}
+	const [activeTheme, setActiveTheme] = useState("jaipur");
+
+	const themeMap = {
+		jaipur: "bg-gray-900 text-gray-50",
+		tokyo: "bg-zinc-900 text-black",
+		london: "bg-indigo-50 text-black",
+		berlin: "bg-green-50 text-black",
+		sydney: "bg-yellow-50 text-black",
+		newyork: "bg-pink-50 text-black",
+	};
+
 	return (
-		<div className={`${state}`}>
-			<Navbar />
-			<div className="h-screen w-full">
-				<div className="flex flex-col justify-center items-center bg-white dark:bg-gray-900 dark:text-gray-400 h-full w-full">
-					<button
-						onClick={toggleTheme}
-						className="p-2 bg-gray-900 text-gray-50 dark:bg-gray-100 dark:text-gray-900 cursor-pointer rounded-md"
-					>
-						Toggle theme
-					</button>
-					Theme: {state}
-				</div>
+		<div
+			className={`outline-none ${themeMap[activeTheme]} h-screen`}
+			tabIndex="0"
+			onKeyDown={(e) => {
+				if (e.key === "t") {
+					toggleTheme("london");
+				}
+			}}
+		>
+			<div className="h-full md:w-1/5 xxs:w-full xs:w-full flex justify-center items-center mx-auto">
+				{Object.keys(themeMap).map((item) => {
+					return (
+						<div
+							className="h-screen w-full mx-auto flex flex-col justify-center items-center"
+							key={item}
+						>
+							<button
+								onClick={() => toggleTheme(item)}
+								className={`p-2 w-10 h-10 border border-black bg-black cursor-pointer rounded-md`}
+							/>
+						</div>
+					);
+				})}
 			</div>
-			<Footer />
 		</div>
 	);
 };

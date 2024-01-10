@@ -8,7 +8,7 @@ module.exports = {
 		"./utils/**/*.{js,ts,jsx,tsx}",
 		"./Admin/**/*.{js,ts,jsx,tsx}",
 	],
-	darkMode: 'class',
+	darkMode: "class",
 	theme: {
 		colors: {
 			blackBg: "rgb(2, 2, 2)",
@@ -26,6 +26,17 @@ module.exports = {
 			indigo: colors.indigo,
 			orange: colors.orange,
 			gray: colors.gray,
+		},
+		extend: {
+			colors: {
+				tokyo: "bg-pink-500 text-white",
+				jaipur: "bg-purple-500 text-white",
+				mumbai: "bg-blue-500 text-white",
+				newyork: "bg-green-500 text-white",
+				london: "bg-orange-500 text-white",
+				lisbon: "bg-brown-500 text-white",
+				berlin: "bg-bluegray-500 text-white",
+			},
 		},
 		screens: {
 			xsm: "200px",

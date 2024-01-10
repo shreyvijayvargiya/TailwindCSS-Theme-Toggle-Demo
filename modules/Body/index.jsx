@@ -37,7 +37,6 @@ const Body = () => {
 			onKeyDown={(e) => {
 				const activeIndex = Object.keys(themeMap).indexOf(activeTheme);
 				if (e.key === "ArrowLeft") {
-					// move on down in themeMap
 					if (activeIndex === 0) {
 						setActiveTheme(
 							Object.keys(themeMap)[Object.keys(themeMap).length - 1]
@@ -45,7 +44,6 @@ const Body = () => {
 					}
 					setActiveTheme(Object.keys(themeMap)[activeIndex - 1]);
 				} else if (e.key === "ArrowRight") {
-					// move right in the themeMap
 					if (activeIndex === Object.keys(themeMap).length - 1) {
 						setActiveTheme(Object.keys(themeMap)[0]);
 					}

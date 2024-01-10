@@ -26,17 +26,11 @@ module.exports = {
 			indigo: colors.indigo,
 			orange: colors.orange,
 			gray: colors.gray,
-		},
-		extend: {
-			colors: {
-				tokyo: "bg-pink-500 text-white",
-				jaipur: "bg-purple-500 text-white",
-				mumbai: "bg-blue-500 text-white",
-				newyork: "bg-green-500 text-white",
-				london: "bg-orange-500 text-white",
-				lisbon: "bg-brown-500 text-white",
-				berlin: "bg-bluegray-500 text-white",
-			},
+			rose: colors.rose,
+			lime: colors.lime,
+			blueGray: colors.blueGray,
+			voilet: colors.violet,
+			purple: colors.purple
 		},
 		screens: {
 			xsm: "200px",
@@ -69,14 +63,6 @@ module.exports = {
 			"1/2": "50%",
 			"3/4": "75%",
 			full: "100%",
-		},
-	},
-	variants: {
-		extend: {
-			colors: {
-				zinc: colors.gray,
-				slate: colors.slate,
-			},
 		},
 	},
 	plugins: [],

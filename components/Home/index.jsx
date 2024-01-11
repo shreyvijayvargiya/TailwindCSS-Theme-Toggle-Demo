@@ -1,5 +1,5 @@
-import { Container, StylesProvider, makeStyles } from "@material-ui/core";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { makeStyles } from "@material-ui/core";
 import colors from "tailwindcss/colors";
 
 const Home = () => {
@@ -12,7 +12,6 @@ const Home = () => {
 	const [intensity, setIntensity] = useState(200);
 
 	const ref = useRef(null);
-	const containerRef = useRef(null);
 
 	const themeMap = {
 		delhi: `bg-orange-${intensity}`,
@@ -79,7 +78,6 @@ const Home = () => {
 		}
 	};
 
-	console.log(intensity <= 700 ? intensity + 100 : intensity);
 	return (
 		<div
 			className={`outline-none ${themeMap[activeTheme]} h-screen overflow-y-hidden overflow-x-scroll`}
@@ -87,12 +85,12 @@ const Home = () => {
 			onKeyDown={handleKeyMove}
 		>
 			<div className="mx-auto my-5 overflow-x-hidden">
-				<div className={styles.cityContainer} ref={containerRef}>
+				<div className={styles.cityContainer}>
 					{Object.keys(themeMap).map((item) => {
 						const themeColor = getThemeColor(item);
 						return (
 							<div
-								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black ${
+								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black z-100 ${
 									activeTheme === item
 										? `border-dashed border-r-2 border-l-2 border-black bg-${themeColor}-${
 												intensity <= 700 ? Number(intensity) + 100 : intensity
@@ -109,6 +107,7 @@ const Home = () => {
 									} my-4 hover:bg-${themeColor}-700 ${
 										activeTheme === item ? "border-2 border-black" : null
 									}`}
+									onClick={() => toggleTheme(item)}
 								>
 									{item.toUpperCase()}
 								</button>
@@ -193,7 +192,6 @@ const useStyles = makeStyles((theme) => ({
 		position: "fixed",
 		left: "50%",
 		top: 0,
-		bottom: 0,
 		transform: "translate(-50%, 0)",
 		// borderLeft: `2px dashed black`,
 		// borderRight: "2px dashed black",

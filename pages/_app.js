@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { theme } from "utils/theme";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { Body } from "modules";
 import { store, persistor } from "redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import app from "utils/firebase";
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -35,9 +33,7 @@ function MyApp({ Component, pageProps }) {
 				<PersistGate loading={null} persistor={persistor}>
 					<ThemeProvider theme={theme}>
 						<MantineProvider withGlobalStyles withNormalizeCSS>
-							<Body pageProps={pageProps}>
-								<Component {...pageProps} />
-							</Body>
+							<Component {...pageProps} />
 						</MantineProvider>
 					</ThemeProvider>
 				</PersistGate>

@@ -116,7 +116,10 @@ const Home = () => {
 					})}
 				</div>
 			</div>
-			<div className={styles.activeContainer}>
+			<div
+				className={styles.activeContainer}
+				//style={{ backgroundColor: colors[getThemeColor(activeTheme)][200] }}
+			>
 				<div className="w-96" style={{ height: "40rem" }}>
 					<p className="text-7xl font-serif font-semibold text-center mb-2">
 						{activeTheme
@@ -192,9 +195,8 @@ const useStyles = makeStyles((theme) => ({
 		position: "fixed",
 		left: "50%",
 		top: 0,
+		bottom: 97,
 		transform: "translate(-50%, 0)",
-		// borderLeft: `2px dashed black`,
-		// borderRight: "2px dashed black",
 		padding: theme.spacing(10),
 	},
 }));

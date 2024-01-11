@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import { theme } from "utils/theme";
-import { Provider } from "react-redux";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { store, persistor } from "redux/store";
-import { PersistGate } from "redux-persist/integration/react";
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClientProvider, QueryClient } from "react-query";
 import "../styles.css";
+import { theme } from "utils/theme";
 import { MantineProvider } from "@mantine/core";
 
 function MyApp({ Component, pageProps }) {
@@ -29,15 +26,11 @@ function MyApp({ Component, pageProps }) {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<ThemeProvider theme={theme}>
-						<MantineProvider withGlobalStyles withNormalizeCSS>
-							<Component {...pageProps} />
-						</MantineProvider>
-					</ThemeProvider>
-				</PersistGate>
-			</Provider>
+			<ThemeProvider theme={theme}>
+				<MantineProvider withGlobalStyles withNormalizeCSS>
+					<Component {...pageProps} />
+				</MantineProvider>
+			</ThemeProvider>
 		</QueryClientProvider>
 	);
 }

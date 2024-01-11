@@ -50,13 +50,9 @@
 		"react-dom": "17.0.0",
 		"react-icons": "^4.1.0",
 		"react-query": "^3.19.6",
-		"react-redux": "^7.2.4",
 		"react-spring": "^9.5.0",
 		"react-toastify": "^8.0.4",
 		"react-transition-group": "^4.4.1",
-		"redux": "^4.0.5",
-		"redux-persist": "^6.0.0",
-		"redux-thunk": "^2.3.0",
 		"tailwindcss": "npm:@tailwindcss/postcss7-compat",
 		"uuid": "^8.3.2"
 	},

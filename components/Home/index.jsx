@@ -15,7 +15,7 @@ const Home = () => {
 	const containerRef = useRef(null);
 
 	const themeMap = {
-		jaipur: `bg-orange-${intensity}`,
+		delhi: `bg-orange-${intensity}`,
 		tokyo: `bg-red-${intensity}`,
 		london: `bg-indigo-${intensity}`,
 		berlin: `bg-green-${intensity}`,
@@ -28,10 +28,10 @@ const Home = () => {
 		moscow: `bg-purple-${intensity}`,
 		bangkok: `bg-orange-${intensity}`,
 		bali: `bg-red-${intensity}`,
-		rr: `bg-orange-${intensity}`,
-		frfr: `bg-red-${intensity}`,
-		lwdedondon: `bg-indigo-${intensity}`,
-		brfrfrerlin: `bg-green-${intensity}`,
+		bhutan: `bg-orange-${intensity}`,
+		belgium: `bg-red-${intensity}`,
+		italy: `bg-indigo-${intensity}`,
+		argentina: `bg-green-${intensity}`,
 	};
 
 	const getThemeColor = (item) => {
@@ -60,13 +60,15 @@ const Home = () => {
 		if (e.key === "ArrowLeft") {
 			if (activeIndex === 0) {
 				setActiveTheme(Object.keys(themeMap)[Object.keys(themeMap).length - 1]);
+			} else {
+				setActiveTheme(Object.keys(themeMap)[activeIndex - 1]);
 			}
-			setActiveTheme(Object.keys(themeMap)[activeIndex - 1]);
 		} else if (e.key === "ArrowRight") {
 			if (activeIndex === Object.keys(themeMap).length - 1) {
 				setActiveTheme(Object.keys(themeMap)[0]);
+			} else {
+				setActiveTheme(Object.keys(themeMap)[activeIndex + 1]);
 			}
-			setActiveTheme(Object.keys(themeMap)[activeIndex + 1]);
 		}
 		if (e.key === " ") {
 			const lastItem = Object.keys(themeMap).length - 1;
@@ -77,6 +79,7 @@ const Home = () => {
 		}
 	};
 
+	console.log(intensity <= 700 ? intensity + 100 : intensity);
 	return (
 		<div
 			className={`outline-none ${themeMap[activeTheme]} h-screen overflow-y-hidden overflow-x-scroll`}
@@ -89,10 +92,10 @@ const Home = () => {
 						const themeColor = getThemeColor(item);
 						return (
 							<div
-								className={`h-fit mx-auto flex flex-col justify-center items-center cursor-pointer px-4 ${
+								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black ${
 									activeTheme === item
-										? `border-dashed border-2 border-black rounded-md bg-${themeColor}-${
-												intensity <= 800 ? intensity + 100 : intensity
+										? `border-dashed border-r-2 border-l-2 border-black bg-${themeColor}-${
+												intensity <= 700 ? Number(intensity) + 100 : intensity
 										  }`
 										: "none"
 								}`}
@@ -114,16 +117,11 @@ const Home = () => {
 					})}
 				</div>
 			</div>
-			<div
-				className={styles.activeContainer}
-				style={{
-					backgroundColor: colors[getThemeColor(activeTheme)][100],
-				}}
-			>
-				<div className="w-96 shadow-xl" style={{ height: "40rem" }}>
-					<p className="text-2xl font-mono font-semibold text-center mb-2">
+			<div className={styles.activeContainer}>
+				<div className="w-96" style={{ height: "40rem" }}>
+					<p className="text-7xl font-serif font-semibold text-center mb-2">
 						{activeTheme
-							.split("")[0]
+							?.split("")[0]
 							.toUpperCase()
 							.concat(activeTheme.slice(1, activeTheme.length))}
 					</p>
@@ -133,7 +131,7 @@ const Home = () => {
 					/>
 				</div>
 			</div>
-			<div className="fixed bottom-10 right-10 text-center border-dashed border-2 border-black">
+			<div className="fixed top-10 right-10 text-center border-dashed border-2 border-black">
 				<p className="w-auto rounde-md p-4 text-sm text-black">
 					Press <span className="bg-gray-800 p-1 text-white">Space</span> or{" "}
 					<span>use {"<-, ->"} keys</span> to toggle theme
@@ -187,10 +185,9 @@ const useStyles = makeStyles((theme) => ({
 		margin: "auto",
 		display: "flex",
 		justifyContent: "space-between",
-		alignItems: "center",
-		height: "100vh",
+		alignItems: "flex-end",
+		height: "98vh",
 		flexWrap: "nowrap",
-		gap: "10px",
 	},
 	activeContainer: {
 		position: "fixed",
@@ -198,8 +195,8 @@ const useStyles = makeStyles((theme) => ({
 		top: 0,
 		bottom: 0,
 		transform: "translate(-50%, 0)",
-		borderLeft: `2px dashed black`,
-		borderRight: "2px dashed black",
+		// borderLeft: `2px dashed black`,
+		// borderRight: "2px dashed black",
 		padding: theme.spacing(10),
 	},
 }));

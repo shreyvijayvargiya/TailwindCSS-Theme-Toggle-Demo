@@ -32,7 +32,7 @@ const Body = () => {
 
 	return (
 		<div
-			className={`outline-none ${themeMap[activeTheme]} h-screen overflow-y-hidden overflow-x-scroll`}
+			className={`outline-none ${themeMap[activeTheme]} h-screen overflow-y-hidden overflow-x-scroll w-full`}
 			tabIndex="0"
 			onKeyDown={(e) => {
 				const activeIndex = Object.keys(themeMap).indexOf(activeTheme);
@@ -96,16 +96,12 @@ const Body = () => {
 							onClick={() => toggleTheme(item)}
 						>
 							{activeTheme === item ? (
-								<>
-									<img
-										loading="lazy"
-										src={`/${activeTheme}.avif`}
-										className="w-full h-96"
-									/>
-								</>
+								<img src={`/${activeTheme}.avif`} className="w-full h-96" />
 							) : (
 								<button
-									className={`p-2 h-10 mx-auto rounded-md text-center align-center border-dotted border-black cursor-pointer bg-${themeColor}-400 my-4 hover:bg-${themeColor}-700`}
+									className={`p-2 h-10 mx-auto rounded-md text-center align-center border-2 border-black cursor-pointer bg-${themeColor}-${
+										intensity > 100 ? intensity - 100 : intensity
+									} my-4 hover:bg-${themeColor}-700`}
 								>
 									{item.toUpperCase()}
 								</button>

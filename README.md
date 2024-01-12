@@ -1,22 +1,4 @@
-# 2023 Full Stack Frontend Repository
+# Indian Dishes
 
-### <a href="">Read Docs</a>
+### Showcase gallery for varieties of Indian dishes
 
-## How to Run Locally
-
-```
-Clone the repository
-run yarn
-run yarn run dev
-open localhost:4001
-
-```
-
-## Packaged used
-
-<ol>
-  <li>Next JS</li>
-  <li>React JS</li>
-  <li>Material UI</li>
-  <li>Tailwind CSS</li>
-</ol>

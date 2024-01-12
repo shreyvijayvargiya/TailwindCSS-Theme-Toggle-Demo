@@ -14,16 +14,23 @@ const Home = () => {
 
 	const ref = useRef(null);
 
-	
 	const handlePlay = () => {
 		setTimeout(() => {
 			setActiveTheme(Object.keys(themeMap)[activeIndex + 1]);
-		}, 500)
+		}, 500);
 	};
 	const handleStop = () => {
-		clearInterval(handlePlay)
-	}
+		clearInterval(handlePlay);
+	};
 
+	const rangesOfIntensity = (n) => {
+		let ranges = {};
+		for (let i = 0; i <= n; i++) {
+			ranges[n * 100] = `bg-orange-${n * 100}`;
+		}
+		return ranges;
+	};
+	console.log(rangesOfIntensity(5));
 	const themeMap = {
 		delhi: `bg-orange-${intensity}`,
 		tokyo: `bg-red-${intensity}`,
@@ -50,8 +57,6 @@ const Home = () => {
 	};
 
 	const styles = useStyles();
-
-	
 
 	const handleKeyMove = (e) => {
 		if (activeIndex <= Math.floor(Object.keys(themeMap).length / 2)) {
@@ -103,9 +108,7 @@ const Home = () => {
 							<div
 								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black z-100 ${
 									activeTheme === item
-										? `border-dashed border-r-2 border-l-2 border-black bg-${themeColor}-${
-												intensity <= 700 ? Number(intensity) + 100 : intensity
-										  }`
+										? `border-dashed border-r-2 border-l-2 border-black`
 										: "none"
 								}`}
 								key={item}
@@ -113,8 +116,10 @@ const Home = () => {
 								onClick={() => toggleTheme(item)}
 							>
 								<button
-									className={`p-2 h-10 mx-auto rounded-md text-center align-center border-2 border-black cursor-pointer outline-none bg-${themeColor}-${
-										intensity > 100 ? intensity - 100 : intensity
+									className={`p-2 h-10 mx-auto rounded-md text-center align-center border-2 border-black cursor-pointer outline-none ${
+										intensity > 100
+											? themeMap[activeTheme]
+											: themeMap[activeTheme]
 									} my-4 hover:bg-${themeColor}-700 ${
 										activeTheme === item ? "border-2 border-black" : null
 									}`}

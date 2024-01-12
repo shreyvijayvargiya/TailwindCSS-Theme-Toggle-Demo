@@ -2,3 +2,27 @@ body {
   margin: 0px;
   background-color: white !important;
 }
+/* root {
+  & .MuiIconButton-root: {
+			padding: 0;
+		}
+	& .ce-toolbar__settings-btn: {
+			color: black;
+	}
+		& .codex-editor__redactor: {
+			paddingBottom: 30px !important;
+			color: black;
+		},
+		& .ce-toolbar__plus: {
+			color:black; 
+		},
+		& .ce-popover: {
+    color: black !important;
+			height: 100px,
+		},
+		& .ce-inline-toolbar__dropdown: {
+			&:hover: {
+				background: black;
+			}
+		}
+} */

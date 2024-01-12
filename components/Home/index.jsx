@@ -43,12 +43,8 @@ const Home = () => {
 		clearInterval(handlePlay);
 	};
 
-	const rangesOfIntensity = (n) => {
-		let ranges = {};
-		for (let i = 0; i <= n; i++) {
-			ranges[n * 100] = `bg-orange-${n * 100}`;
-		}
-		return ranges;
+	const rangesOfIntensity = (n, theme) => {
+		return `bg-${theme}-${n}`;
 	};
 
 	const getThemeColor = (item) => {
@@ -105,11 +101,13 @@ const Home = () => {
 				<div className={styles.cityContainer}>
 					{Object.keys(themeMap).map((item) => {
 						const themeColor = getThemeColor(item);
+						const high700Color = rangesOfIntensity(700, themeColor);
+						const highColor = rangesOfIntensity(intensity + 100, themeColor);
 						return (
 							<div
 								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black z-100 ${
 									activeTheme === item
-										? `border-dashed border-r-2 border-l-2 border-black`
+										? `border-dashed border-r-2 border-l-2 border-black ${highColor}`
 										: "none"
 								}`}
 								key={item}
@@ -119,11 +117,10 @@ const Home = () => {
 								<button
 									className={`p-2 h-10 mx-auto rounded-md text-center align-center border-2 border-black cursor-pointer outline-none ${
 										intensity > 100
-											? themeMap[activeTheme]
+											? highColor
 											: themeMap[activeTheme]
-									} my-4 hover:bg-${themeColor}-700 ${
-										activeTheme === item ? "border-2 border-black" : null
-									}`}
+									} my-4 hover:${high700Color}
+										${activeTheme === item ? "border-2 border-black" : null}`}
 									onClick={() => toggleTheme(item)}
 								>
 									{item.toUpperCase()}

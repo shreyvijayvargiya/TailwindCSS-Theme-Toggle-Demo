@@ -1,9 +1,9 @@
 import { responsiveFontSizes } from "@material-ui/core";
-import { createTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 import colors from "utils/config/colors";
 
 export const theme = responsiveFontSizes(
-	createTheme({
+	createMuiTheme({
 		palette: {
 			primary: { main: colors.yellow[600], light: colors.yellow[500] },
 			secondary: { main: colors.gray[300], light: colors.gray[300] },

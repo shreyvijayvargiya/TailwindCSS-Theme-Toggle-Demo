@@ -6,10 +6,30 @@ const Home = () => {
 	const toggleTheme = (theme) => {
 		setActiveTheme(theme);
 	};
+	const [intensity, setIntensity] = useState(200);
+	const themeMap = {
+		delhi: `bg-orange-${intensity}`,
+		tokyo: `bg-red-${intensity}`,
+		london: `bg-indigo-${intensity}`,
+		berlin: `bg-green-${intensity}`,
+		sydney: `bg-yellow-${intensity}`,
+		newyork: `bg-pink-${intensity}`,
+		istanbul: `bg-blue-${intensity}`,
+		seoul: `bg-rose-${intensity}`,
+		capetown: `bg-blueGray-${intensity}`,
+		amsterdam: `bg-lime-${intensity}`,
+		moscow: `bg-purple-${intensity}`,
+		bangkok: `bg-orange-${intensity}`,
+		bali: `bg-red-${intensity}`,
+		bhutan: `bg-orange-${intensity}`,
+		belgium: `bg-red-${intensity}`,
+		italy: `bg-indigo-${intensity}`,
+		argentina: `bg-green-${intensity}`,
+	};
 
 	const [activeTheme, setActiveTheme] = useState("jaipur");
 	const intensities = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-	const [intensity, setIntensity] = useState(200);
+
 	const activeIndex = Object.keys(themeMap).indexOf(activeTheme);
 
 	const ref = useRef(null);
@@ -31,25 +51,6 @@ const Home = () => {
 		return ranges;
 	};
 	console.log(rangesOfIntensity(5));
-	const themeMap = {
-		delhi: `bg-orange-${intensity}`,
-		tokyo: `bg-red-${intensity}`,
-		london: `bg-indigo-${intensity}`,
-		berlin: `bg-green-${intensity}`,
-		sydney: `bg-yellow-${intensity}`,
-		newyork: `bg-pink-${intensity}`,
-		istanbul: `bg-blue-${intensity}`,
-		seoul: `bg-rose-${intensity}`,
-		capetown: `bg-blueGray-${intensity}`,
-		amsterdam: `bg-lime-${intensity}`,
-		moscow: `bg-purple-${intensity}`,
-		bangkok: `bg-orange-${intensity}`,
-		bali: `bg-red-${intensity}`,
-		bhutan: `bg-orange-${intensity}`,
-		belgium: `bg-red-${intensity}`,
-		italy: `bg-indigo-${intensity}`,
-		argentina: `bg-green-${intensity}`,
-	};
 
 	const getThemeColor = (item) => {
 		const themeColor = themeMap[item]?.split(" ")[0]?.split("-")[1];

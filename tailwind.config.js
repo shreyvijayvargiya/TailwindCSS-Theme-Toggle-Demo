@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
 	purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-	darkMode: "class",
+	darkMode: false, // or 'media' or 'class'
 	theme: {
 		colors: {
 			blackBg: "rgb(2, 2, 2)",
@@ -50,6 +50,13 @@ module.exports = {
 
 			xxl: "1536px",
 			// => @media (min-width: 1536px) { ... }
+		},
+		minWidth: {
+			0: "0",
+			"1/4": "25%",
+			"1/2": "50%",
+			"3/4": "75%",
+			full: "100%",
 		},
 	},
 	variants: {

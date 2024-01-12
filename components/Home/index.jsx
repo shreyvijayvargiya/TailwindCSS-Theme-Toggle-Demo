@@ -50,7 +50,6 @@ const Home = () => {
 		}
 		return ranges;
 	};
-	console.log(rangesOfIntensity(5));
 
 	const getThemeColor = (item) => {
 		const themeColor = themeMap[item]?.split(" ")[0]?.split("-")[1];
@@ -95,9 +94,10 @@ const Home = () => {
 		}
 	};
 
+	const activeThemeBg = themeMap[activeTheme];
 	return (
 		<div
-			className={`outline-none ${themeMap[activeTheme]} h-screen overflow-y-hidden overflow-x-scroll`}
+			className={`outline-none ${activeThemeBg} h-screen overflow-y-hidden overflow-x-scroll`}
 			tabIndex="0"
 			onKeyDown={handleKeyMove}
 		>

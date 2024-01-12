@@ -10,8 +10,19 @@ const Home = () => {
 	const [activeTheme, setActiveTheme] = useState("jaipur");
 	const intensities = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 	const [intensity, setIntensity] = useState(200);
+	const activeIndex = Object.keys(themeMap).indexOf(activeTheme);
 
 	const ref = useRef(null);
+
+	
+	const handlePlay = () => {
+		setTimeout(() => {
+			setActiveTheme(Object.keys(themeMap)[activeIndex + 1]);
+		}, 500)
+	};
+	const handleStop = () => {
+		clearInterval(handlePlay)
+	}
 
 	const themeMap = {
 		delhi: `bg-orange-${intensity}`,
@@ -40,7 +51,7 @@ const Home = () => {
 
 	const styles = useStyles();
 
-	const activeIndex = Object.keys(themeMap).indexOf(activeTheme);
+	
 
 	const handleKeyMove = (e) => {
 		if (activeIndex <= Math.floor(Object.keys(themeMap).length / 2)) {

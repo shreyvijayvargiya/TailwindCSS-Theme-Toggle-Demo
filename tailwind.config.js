@@ -2,7 +2,8 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
 	purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-	darkMode: false, // or 'media' or 'class'
+	darkMode: false, // or 'media' or 'class',
+	jit: true,
 	theme: {
 		extend: {
 			colors: {
@@ -10,8 +11,8 @@ module.exports = {
 				grayBlack: "rgb(20, 20, 20)",
 				black: "rgb(0, 0, 0)",
 				blackShade: "#0b0b0b",
-				transparent: colors.transparent,
 				whiteText: "rgb(230, 230, 230)",
+				transparent: colors.transparent,
 				yellow: colors.yellow,
 				red: colors.red,
 				green: colors.green,
@@ -59,28 +60,6 @@ module.exports = {
 			"1/2": "50%",
 			"3/4": "75%",
 			full: "100%",
-		},
-	},
-	variants: {
-		extend: {
-			colors: {
-				zinc: colors.gray,
-				slate: colors.slate,
-				yellow: colors.yellow,
-				red: colors.red,
-				green: colors.green,
-				white: colors.white,
-				pink: colors.pink,
-				blue: colors.blue,
-				indigo: colors.indigo,
-				orange: colors.orange,
-				gray: colors.gray,
-				rose: colors.rose,
-				lime: colors.lime,
-				blueGray: colors.blueGray,
-				voilet: colors.violet,
-				purple: colors.purple,
-			},
 		},
 	},
 	plugins: [],

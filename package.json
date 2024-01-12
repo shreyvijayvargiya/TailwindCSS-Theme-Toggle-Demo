@@ -41,7 +41,7 @@
 		"fs": "^0.0.1-security",
 		"lodash": "^4.17.21",
 		"moment": "^2.29.1",
-		"next": "^10.0.0",
+		"next": "^11.0.0",
 		"next-cookies": "^2.0.3",
 		"next-images": "^1.7.0",
 		"path": "^0.12.7",

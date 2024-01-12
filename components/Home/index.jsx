@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import colors from "tailwindcss/colors";
+import colors from "utils/config/colors";
 
 const Home = () => {
 	const toggleTheme = (theme) => {

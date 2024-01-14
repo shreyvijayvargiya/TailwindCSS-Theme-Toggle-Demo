@@ -75,6 +75,7 @@
 		"react-toastify": "^8.0.4",
 		"react-transition-group": "^4.4.1",
 		"react-wavify": "^1.9.0",
+		"swiper": "^11.0.5",
 		"tailwindcss": "npm:@tailwindcss/postcss7-compat",
 		"three": "^0.159.0",
 		"uuid": "^8.3.2"

@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "tailwindcss/tailwind.css";
 import "../styles.css";
 import "../nprogress.css";
+import 'swiper/css/bundle';
 
 function MyApp({ Component, pageProps }) {
 	const queryClient = new QueryClient({

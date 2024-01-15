@@ -143,7 +143,7 @@ const Home = () => {
 		>
 			<div className="mx-auto my-5 overflow-x-hidden">
 				<div className={styles.cityContainer}>
-					{Object.keys(themeMap).map((item) => {
+					{Object.keys(themeMap).map((item, index) => {
 						const themeColor = getThemeColor(item);
 						const high700Color = rangesOfIntensity(700, themeColor);
 						const highColor = rangesOfIntensity(
@@ -152,12 +152,16 @@ const Home = () => {
 						);
 						return (
 							<div
-								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-t-2 border-b-2 border-dashed border-black z-100 ${
+								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-dashed border-black z-100 ${
 									activeTheme === item
-										? `border-dashed border-r-2 border-l-2 border-black ${highColor}`
+										? `${highColor} rounded-md`
 										: "none"
 								}`}
 								key={item}
+								style={{
+									position: "relative",
+									bottom: index % 2 === 0 ? 90 + index + "px" : "0px",
+								}}
 								ref={activeTheme === item ? ref : null}
 								onClick={() => toggleTheme(item)}
 							>
@@ -202,6 +206,7 @@ const Home = () => {
 									className={`${
 										activeTheme === i ? "w-96" : "w-60"
 									} h-full rounded-xl`}
+									onClick={() => setActiveTheme(i)}
 								/>
 							</animated.div>
 						);
@@ -273,12 +278,15 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "flex-end",
 		height: "98vh",
 		flexWrap: "nowrap",
+		overflowX: "scroll",
+		msOverflowStyle: "-ms-autohiding-scrollbar",
 	},
 	activeContainer: {
 		position: "fixed",
 		left: "50%",
 		top: "10%",
-		width: "60vw",
+		width: "700px",
+		height: "600px",
 		transform: "translate(-50%, 0)",
 	},
 	slideContainer: {

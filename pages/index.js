@@ -1,5 +1,5 @@
-import { Home } from "components";
+import { Home, SecondHome } from "components";
 import React from "react";
 
-const HomePage = () => <Home />;
+const HomePage = () => <SecondHome />;
 export default HomePage;

@@ -63,6 +63,8 @@
 		"pretty-js": "^0.2.2",
 		"react": "17.0.0",
 		"react-dom": "17.0.0",
+		"react-globe": "^5.0.2",
+		"react-globe.gl": "^2.27.1",
 		"react-gridlines": "^1.1.7",
 		"react-icons": "^4.1.0",
 		"react-loading": "^2.0.3",
@@ -77,7 +79,7 @@
 		"react-wavify": "^1.9.0",
 		"swiper": "^11.0.5",
 		"tailwindcss": "npm:@tailwindcss/postcss7-compat",
-		"three": "^0.159.0",
+		"three": "0.118.3",
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {

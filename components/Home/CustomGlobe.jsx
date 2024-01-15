@@ -5,18 +5,13 @@ import HEX_DATA from "./data/countries_hex_data.json";
 import Globe from "react-globe.gl";
 import colors from "tailwindcss/colors";
 
-const getRandomCountry = () => {
-	return COUNTRIES_DATA[Math.floor(Math.random() * COUNTRIES_DATA.length)];
-};
-
-export default function CustomGlobe() {
+export default function CustomGlobe({
+	labelTheme,
+	activeCountry,
+	setActiveCountry,
+}) {
 	const globeEl = useRef();
-	const country = getRandomCountry();
-	const [selectedCountry, setSelectedCountry] = useState({
-		lat: country.latitude,
-		lng: country.longitude,
-		label: country.name,
-	});
+
 	const [hex, setHex] = useState({ features: [] });
 
 	useEffect(() => {
@@ -30,57 +25,50 @@ export default function CustomGlobe() {
 
 	useEffect(() => {
 		const countryLocation = {
-			lat: selectedCountry.lat,
-			lng: selectedCountry.lng,
+			lat: activeCountry.latitude,
+			lng: activeCountry.longitude,
 			altitude: 1.5,
 		};
-
-		globeEl.current.pointOfView(countryLocation, 2000);
-	}, [selectedCountry]);
-
-	const themes = [
-		"orange",
-		"red",
-		"indigo",
-		"green",
-		"yellow",
-		"pink",
-		"blue",
-		"rose",
-		"blueGray",
-		"lime",
-		"purple",
-	];
-
-	const [intensity, setIntensity] = useState(100);
-	const [active, setActive] = useState(0);
+		globeEl.current.pointOfView(countryLocation, 1000);
+	}, [activeCountry]);
 
 	return (
-		<Globe
-			ref={globeEl}
-			height={800}
-			backgroundColor="rgba(0,0,0,0)"
-			labelsData={COUNTRIES_DATA.map((item) => {
-				return {
-					lat: item.latitude,
-					lng: item.longitude,
-					name: item.name,
-				};
-			})}
-			onLabelClick={({ lat, lng, name }) => {
-				setSelectedCountry({ label: name, lat, lng });
-			}}
-			atmosphereColor={colors.gray[800]}
-			showAtmosphere={false}
-			labelText={"name"}
-			labelSize={0.8}
-			labelColor={useCallback(() => colors["gray"][50], [])}
-			labelDotRadius={0.2}
-			labelAltitude={0.05}
-			hexPolygonsData={hex.features}
-			hexPolygonResolution={3}
-			hexPolygonMargin={0.62}
-			hexPolygonColor={useCallback(() => colors.gray[800], [])}
-		/>
+		<div
+			className={` h-screen text-white w-screen flex flex-col justify-center items-center z-10`}
+		>
+			<Globe
+				ref={globeEl}
+				height={800}
+				backgroundColor="rgba(0,0,0,0)"
+				labelsData={COUNTRIES_DATA.map((item) => {
+					return {
+						lat: item.latitude,
+						lng: item.longitude,
+						name: item.name,
+						country: item.country,
+					};
+				})}
+				onLabelClick={({ lat, lng, name, country }) => {
+					setActiveCountry({
+						label: name,
+						latitude: lat,
+						longitude: lng,
+						country,
+					});
+				}}
+				atmosphereColor={colors.gray[800]}
+				showAtmosphere={false}
+				labelText={"name"}
+				labelSize={1}
+				labelColor={() => colors[labelTheme][200]}
+				labelDotRadius={0.2}
+				labelAltitude={0.05}
+				arcColor={colors.orange[600]}
+				hexPolygonsData={hex.features}
+				hexPolygonResolution={3}
+				hexPolygonMargin={0.62}
+				hexPolygonColor={useCallback(() => colors.gray[800], [])}
+			/>
+		</div>
 	);
 }

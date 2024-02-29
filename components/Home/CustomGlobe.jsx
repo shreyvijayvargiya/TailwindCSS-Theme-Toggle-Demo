@@ -10,14 +10,14 @@ export default function CustomGlobe({
 	activeCountry,
 	setActiveCountry,
 }) {
-	const globeEl = useRef();
-
+	
 	const [hex, setHex] = useState({ features: [] });
-
+	
 	useEffect(() => {
 		setHex(HEX_DATA);
 	}, []);
-
+	
+	const globeEl = useRef();
 	useEffect(() => {
 		const MAP_CENTER = { lat: 0, lng: 0, altitude: 1.5 };
 		globeEl.current.pointOfView(MAP_CENTER, 0);

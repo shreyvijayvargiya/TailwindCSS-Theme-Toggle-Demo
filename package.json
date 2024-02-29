@@ -49,6 +49,7 @@
 		"framer-motion": "^10.16.16",
 		"fs": "^0.0.1-security",
 		"fuse.js": "^6.6.2",
+		"gsap": "^3.12.5",
 		"html-react-parser": "^3.0.8",
 		"js-beautify": "^1.14.0",
 		"lodash": "^4.17.21",

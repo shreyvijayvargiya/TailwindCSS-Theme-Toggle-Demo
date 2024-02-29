@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { IconButton, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import colors from "utils/config/colors";
-import GridLines from "react-gridlines";
-import { useSpring, animated, useTransition, useTrail } from "react-spring";
+import { animated, useTransition } from "react-spring";
+
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 const Home = () => {
@@ -153,9 +153,7 @@ const Home = () => {
 						return (
 							<div
 								className={`mx-auto flex flex-col justify-center items-center cursor-pointer px-4 border-dashed border-black z-100 ${
-									activeTheme === item
-										? `${highColor} rounded-md`
-										: "none"
+									activeTheme === item ? `${highColor} rounded-md` : "none"
 								}`}
 								key={item}
 								style={{
@@ -183,7 +181,7 @@ const Home = () => {
 				{textSpring((style) => (
 					<animated.p
 						style={style}
-						className="text-6xl font-serif font-semibold text-center mb-2"
+						className="text-6xl active-city-text font-serif font-semibold text-center mb-2"
 					>
 						{activeTheme
 							?.split("")[0]
